@@ -2,10 +2,13 @@ import { Module } from '@nestjs/common';
 import * as Joi from 'joi';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
-import { RestaurantsModule } from './restaurants/restaurants.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { CommonModule } from './common/common.module';
+import { RestaurantsModule } from './restaurants/restaurants.module';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
+import { User } from './users/entities/user.entity';
 
 console.log(Joi);
 
@@ -36,9 +39,10 @@ console.log(Joi);
       database: process.env.DB_DATABASE,
       synchronize: true,
       logging: true,
-      entities: [Restaurant],
+      entities: [User],
     }),
-    RestaurantsModule,
+    UsersModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],
