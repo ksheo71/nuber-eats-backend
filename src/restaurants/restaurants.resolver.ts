@@ -28,6 +28,12 @@ export class RestaurantResolver {
   async updateRestaurant(
     @Args('input') updateRestaurantDto: UpdateRestaurantDto,
   ): Promise<boolean> {
-    return true;
+    try {
+      await this.restaurantService.updaterRestaurant(updateRestaurantDto);
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
   }
 }
