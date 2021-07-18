@@ -25,7 +25,6 @@ export class UsersResolver {
     } catch (error) {
       return { error, ok: false };
     }
-    return new CreateAccountOutput();
   }
 
   @Mutation((returns) => LoginOutput)
@@ -37,8 +36,8 @@ export class UsersResolver {
     }
   }
 
-  @Query((returns) => User)
-  me(): User {
-    return new User();
+  @Query((returns) => Boolean)
+  me() {
+    return true;
   }
 }
