@@ -10,6 +10,7 @@ import * as bcrypt from 'bcrypt';
 import { InternalServerError } from 'http-errors';
 import { InternalServerErrorException } from '@nestjs/common';
 import { IsEmail, IsEnum, IsString } from 'class-validator';
+import { OutputTypeFactory } from '@nestjs/graphql/dist/schema-builder/factories/output-type.factory';
 
 enum UserRole {
   Client,
@@ -20,6 +21,7 @@ enum UserRole {
 registerEnumType(UserRole, { name: 'UserRole' });
 
 @InputType({ isAbstract: true })
+@ObjectType()
 @Entity()
 export class User extends CoreEntity {
   @Column()
