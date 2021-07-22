@@ -48,7 +48,7 @@ console.log(Joi);
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       synchronize: true,
-      logging: true,
+      logging: false,
       entities: [User],
     }),
     UsersModule,
