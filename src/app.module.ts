@@ -17,6 +17,7 @@ import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
 import { AuthModule } from './auth/auth.module';
+import { Verification } from './users/entities/verification.entity';
 
 console.log(Joi);
 
@@ -48,8 +49,8 @@ console.log(Joi);
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       synchronize: true,
-      logging: false,
-      entities: [User],
+      logging: true,
+      entities: [User, Verification],
     }),
     UsersModule,
     JwtModule.forRoot({
